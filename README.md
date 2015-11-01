@@ -1,4 +1,4 @@
-# Angular 1.x demo front-end for Spring Lemon
+# Demo Angular 1.x front-end for Spring Lemon
 
 This is an Angular 1.x demo front-end for the [Lemon demo application](https://github.com/naturalprogrammer/lemon-demo).
 
@@ -12,7 +12,7 @@ Install or upgrade *Node.js* by following steps given at [https://nodejs.org](ht
 
 ### Installing NPM, Yeoman, Bower and Grunt
 
-Type the commands below in an ADMIN shell to install these:
+Type the commands below in an ADMIN shell:
 
 ``` bash
 npm install --global npm
@@ -27,11 +27,11 @@ bower --version
 grunt --version
 ```
 
-## Checking out the project from GitHub
+## Checking out the project
 
 > New to Git? Our [Git Rapid Tutorial](http://www.naturalprogrammer.com/tutorials/) could help.
 
-Assuming git is installed on your machine, open a command prompt, go to some folder under which you want the project to be checked out, and run the following command:
+Assuming git is installed on your machine, open a command prompt and `cd` to the folder under which you want to check out this project. Then, run the following command:
 ```
 git clone --depth 1 https://github.com/naturalprogrammer/lemon-demo-angular1.git
 ```
