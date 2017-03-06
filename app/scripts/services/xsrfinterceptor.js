@@ -10,22 +10,7 @@
  * Factory in the angularSampleApp.
  */
 angular.module('appBoot')
-  .factory('XSRFInterceptor', function ($log) {
-
-    //var XSRFInterceptor = {
-    //
-    //  request: function(config) {
-    //
-    //    var token = $cookies.get('XSRF-TOKEN');
-    //
-    //    if (token) {
-    //      config.headers['X-XSRF-TOKEN'] = token;
-    //      $log.info("X-XSRF-TOKEN: " + token);
-    //    }
-    //
-    //    return config;
-    //  }
-    //};
+  .factory('XSRFInterceptor', function ($cookies, $log) {
 
     var xsrfToken;
 
@@ -43,11 +28,11 @@ angular.module('appBoot')
 
       response: function(response) {
 
-        var newToken = response.headers('X-XSRF-TOKEN');
+        var newToken = $cookies.get('XSRF-TOKEN');
 
         if (newToken) {
           xsrfToken = newToken;
-          $log.info("X-XSRF-TOKEN received from server: " + xsrfToken);
+          $log.info("XSRF-TOKEN received from server: " + xsrfToken);
         }
 
         return response;

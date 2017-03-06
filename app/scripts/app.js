@@ -84,6 +84,7 @@ var serverUrl;
       'ngRoute',
       'ngSanitize',
       'ngTouch',
+      'ngCookies',
       'appBoot'
     ])
     .config(function ($routeProvider, $locationProvider) {
