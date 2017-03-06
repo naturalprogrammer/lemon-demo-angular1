@@ -14,7 +14,7 @@ angular.module('angularSampleApp')
 
     $scope.update = function() {
 
-      formService.submit($scope.form, '/api/core/users/' + $scope.user.id + '/update', 'post', {
+      formService.submit($scope.form, '/api/core/users/' + $scope.user.id, 'put', {
         data: $scope.user,
         successMessage: 'Profile updated',
         onSuccess: function(currentUser){

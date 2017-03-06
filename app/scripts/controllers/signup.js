@@ -22,7 +22,7 @@ angular.module('appBoot')
     $scope.agree = false;
 
 		$scope.signup = function() {
-      formService.submit($scope.form, '/api/core/signup', 'post', {
+      formService.submit($scope.form, '/api/core/users', 'post', {
         data: $scope.user,
         successMessage: 'Signed in. Please check your mail for validation email',
         onSuccess: function(data){

@@ -50,7 +50,7 @@ angular.module('angularSampleApp')
 
         into[as] = null;
 
-        $http.get(serverUrl + '/api/core/users/' + id + '/fetch-by-id')
+        $http.get(serverUrl + '/api/core/users/' + id)
           .success(function(rawUser, status, headers, config) {
             into[as] = new User(rawUser);
           })
