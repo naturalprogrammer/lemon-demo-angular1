@@ -1,4 +1,4 @@
-# Demo Angular 1.x front-end for Spring Lemon - WARNING - NO MORE COMPATIBLE WITH LATEST ANGULAR 1.x
+# Demo Angular 1.x front-end for Spring Lemon
 
 This is an Angular 1.x demo front-end for the [Lemon demo application](https://github.com/naturalprogrammer/lemon-demo).
 
