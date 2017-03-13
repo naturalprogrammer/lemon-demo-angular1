@@ -47,7 +47,12 @@ angular.module('appBoot')
 
     $scope.facebookLogin = function() {
       window.open(serverUrl + "/login/facebook","_blank",
-          "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+          "height=700,width=700,status=yes,toolbar=no,menubar=no,location=no");
+    }
+
+    $scope.googleLogin = function() {
+      window.open(serverUrl + "/login/google","_blank",
+        "height=700,width=700,status=yes,toolbar=no,menubar=no,location=no");
     }
 
     $window.afterSocialLogin = function() {

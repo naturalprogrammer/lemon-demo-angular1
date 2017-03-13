@@ -140,6 +140,10 @@ var serverUrl;
           templateUrl: 'views/change-email.html',
           controller: 'ChangeEmailCtrl'
         })
+        .when('/after-social-login', {
+          templateUrl: 'views/after-social-login.html',
+          controller: 'AfterSocialLoginCtrl'
+        })
         .otherwise({
           redirectTo: '/'
         });
