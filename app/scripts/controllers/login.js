@@ -8,7 +8,7 @@
  * Controller of the angularSampleApp
  */
 angular.module('appBoot')
-  .controller('LoginCtrl', function ($scope, $http, $modal, $log, $location, authService) {
+  .controller('LoginCtrl', function ($scope, $http, $modal, $log, $location, $window, authService) {
 
     $scope.credentials = {
       username: '',
@@ -44,5 +44,24 @@ angular.module('appBoot')
       $location.url("/forgot-password");
       $scope.cancel();
     };
+
+    $scope.facebookLogin = function() {
+      window.open(serverUrl + "/login/facebook","_blank",
+          "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+    }
+
+    $window.afterSocialLogin = function() {
+
+      $http.get(serverUrl + '/api/core/context')
+        .success(function (data, status, headers, config) {
+
+          authService.changeUser(data.user);
+          $modal.loginModalInstance.close();
+        })
+        .error(function (data, status, headers, config) {
+
+            alert("Could not connect to server. Please try refreshing after sometime");
+        });
+    }
 
   });

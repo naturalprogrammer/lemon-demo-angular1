@@ -35,6 +35,12 @@
   </form>
 </div>
 <div class="modal-footer">
+
+  <div class="btn-group" role="group" aria-label="Social Login" style="display:block">
+    <button type="button" class="btn btn-default" ng-click="facebookLogin()">Facebook</button>
+    <button type="button" class="btn btn-default" ng-click="googleLogin()">Google</button>
+  </div>
+
   <button ng-disabled="form.$invalid" type="submit" class="btn btn-primary" form="loginForm">OK</button>
   <button class="btn btn-default" ng-click="forgotPassword()">Forgot Password</button>
   <button class="btn btn-default" ng-click="cancel()">Cancel</button>
