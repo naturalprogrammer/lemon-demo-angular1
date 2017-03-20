@@ -27,7 +27,4 @@ angular.module('angularSampleApp')
     $scope.switchUser = function() {
       authService.switchUser($scope.email);
     };
-
-
-
   });

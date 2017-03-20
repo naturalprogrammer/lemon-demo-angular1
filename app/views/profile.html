@@ -22,6 +22,6 @@
     <a class="btn btn-link" ng-href="{{user.changePasswordLink()}}">Change password</a>
     <a class="btn btn-link" ng-href="{{user.changeEmailLink()}}">Change email id</a>
     <a class="btn btn-link" href="#" ng-if="user.unverified" ng-click="resendVerificationMail(user.id)">Resend verification mail</a>
+    <a class="btn btn-link" ng-href="{{user.tokenLink()}}">API Token</a>
   </div>
 </div>
-

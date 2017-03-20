@@ -1,0 +1,24 @@
+<secured permitted="permitted">
+
+  <div class="panel panel-success">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Create/remove token for {{user.email}}</h3>
+    </div>
+
+    <div class="panel-body" ng-if="token != null">
+
+      <dl class="dl-horizontal">
+        <dt>Token</dt>
+        <dd>{{token}}</dd>
+        <dt></dt>
+        <dd class="text-danger">Please note that it's visible only one time. So, copy it somewhere. If you lose it, you'll have to recreate a token, which'll be a different one.</dd>
+      </dl>
+
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary" ng-click="createToken()">Create Token</button>
+      <button class="btn btn-default" ng-click="removeToken()">Remove Token</button>
+    </div>
+  </div>
+</secured>
