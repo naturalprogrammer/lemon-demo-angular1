@@ -43,8 +43,8 @@ angular.module('angularSampleApp')
       return '/users/' + this.id + '/request-email-change';
     };
 
-    User.prototype.tokenLink = function() {
-      return '/users/' + this.id + '/token';
+    User.prototype.apiKeyLink = function() {
+      return '/users/' + this.id + '/api-key';
     };
 
     // Public API here

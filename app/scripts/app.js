@@ -140,9 +140,9 @@ var serverUrl;
           templateUrl: 'views/change-email.html',
           controller: 'ChangeEmailCtrl'
         })
-        .when('/users/:id/token', {
-          templateUrl: 'views/token.html',
-          controller: 'TokenCtrl'
+        .when('/users/:id/api-key', {
+          templateUrl: 'views/api-key.html',
+          controller: 'ApiKeyCtrl'
         })
         .when('/after-social-login', {
           templateUrl: 'views/after-social-login.html',

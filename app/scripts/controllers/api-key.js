@@ -8,7 +8,7 @@
  * Controller of the angularSampleApp
  */
 angular.module('angularSampleApp')
-  .controller('TokenCtrl', function ($scope, $routeParams, $http, userService, alerts) {
+  .controller('ApiKeyCtrl', function ($scope, $routeParams, $http, userService, alerts) {
 
     userService.fetchById($routeParams.id, $scope, 'user');
 
@@ -18,29 +18,29 @@ angular.module('angularSampleApp')
 
     $scope.token = null;
 
-    $scope.createToken = function() {
-      if (confirm("This will remove any existing token. Are you sure?")) {
-        $http.post(serverUrl + '/api/core/users/' + $routeParams.id + '/token')
-          .success(function (tokenData, status, headers, config) {
-            $scope.token = tokenData.token;
+    $scope.createApiKey = function() {
+      if (confirm("This will remove any existing API key. Are you sure?")) {
+        $http.post(serverUrl + '/api/core/users/' + $routeParams.id + '/api-key')
+          .success(function (apiKeyData, status, headers, config) {
+            $scope.apiKey = apiKeyData.apiKey;
           })
           .error(function (error, status, headers, config) {
             alerts.setKind('danger');
-            alerts.addAlert("Error creating token: " + error.message);
+            alerts.addAlert("Error creating API key: " + error.message);
           });
       }
     }
 
-    $scope.removeToken = function() {
-      $http.delete(serverUrl + '/api/core/users/' + $routeParams.id + '/token')
+    $scope.removeApiKey = function() {
+      $http.delete(serverUrl + '/api/core/users/' + $routeParams.id + '/api-key')
         .success(function(tokenData, status, headers, config) {
-          $scope.token = null;
+          $scope.apiKey = null;
           alerts.setKind('success');
-          alerts.addAlert("Token removed.");
+          alerts.addAlert("API key removed.");
         })
         .error(function(error, status, headers, config) {
           alerts.setKind('danger');
-          alerts.addAlert("Error removing token: " + error.message);
+          alerts.addAlert("Error removing API key: " + error.message);
         });
     }
   });
