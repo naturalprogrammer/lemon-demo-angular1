@@ -20,5 +20,4 @@ angular.module('appBoot')
           alerts.addAlert("Could not ping server. Please try refreshing after sometime");
         });
     };
-
   });

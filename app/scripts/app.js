@@ -42,22 +42,24 @@ var serverUrl;
     var $http = initInjector.get("$http");
     $http.defaults.withCredentials = true;
 
-    $http.get(serverUrl + '/api/core/context').
-      success(function (data, status, headers, config) {
+    // create session
+    $http.get(serverUrl + '/api/core/ping-session').success(function() {
 
-        data.context.user = data.user;
-        angular.module('appBoot').constant("context", data.context);
-        $http.get(serverUrl + '/api/core/ping'); // otherwise gives CSRF exception if remember-me is activated
+        // fetch context
+        $http.get(serverUrl + '/api/core/context').
+        success(function (data, status, headers, config) {
 
-        angular.element(document).ready(function() {
-          angular.bootstrap(document, [appName]);
-        });
+          data.context.user = data.user;
+          angular.module('appBoot').constant("context", data.context);
+          $http.get(serverUrl + '/api/core/ping'); // otherwise gives CSRF exception if remember-me is activated
 
-      })
-      .error(function (data, status, headers, config) {
+          angular.element(document).ready(function() {
+            angular.bootstrap(document, [appName]);
+          });
+        })
+      }).error(function (data, status, headers, config) {
 
         alert("Could not connect to server. Please try refreshing after sometime");
-
       });
   };
 
