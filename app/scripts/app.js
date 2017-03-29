@@ -146,9 +146,9 @@ var serverUrl;
           templateUrl: 'views/api-key.html',
           controller: 'ApiKeyCtrl'
         })
-        .when('/after-social-login', {
-          templateUrl: 'views/after-social-login.html',
-          controller: 'AfterSocialLoginCtrl'
+        .when('/social-login-success', {
+          templateUrl: 'views/social-login-success.html',
+          controller: 'SocialLoginSuccessCtrl'
         })
         .otherwise({
           redirectTo: '/'

@@ -57,7 +57,7 @@ angular.module('appBoot')
         "height=700,width=700,status=yes,toolbar=no,menubar=no,location=no");
     }
 
-    $window.afterSocialLogin = function() {
+    $window.socialLoginSuccess = function() {
 
       $http.get(serverUrl + '/api/core/context')
         .success(function (data, status, headers, config) {
@@ -70,5 +70,4 @@ angular.module('appBoot')
             alert("Could not connect to server. Please try refreshing after sometime");
         });
     }
-
   });
