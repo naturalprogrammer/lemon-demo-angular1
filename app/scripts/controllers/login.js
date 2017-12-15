@@ -46,14 +46,12 @@ angular.module('appBoot')
     };
 
     $scope.facebookLogin = function() {
-      $window.open(serverUrl + "/login/facebook?rememberMe="
-        + $scope.credentials.rememberMe, "_blank",
+      $window.open(serverUrl + "/oauth2/authorization/facebook", "_blank",
         "height=700,width=700,status=yes,toolbar=no,menubar=no,location=no");
     }
 
     $scope.googleLogin = function() {
-      $window.open(serverUrl + "/login/google?rememberMe="
-        + $scope.credentials.rememberMe,"_blank",
+      $window.open(serverUrl + "/oauth2/authorization/google", "_blank",
         "height=700,width=700,status=yes,toolbar=no,menubar=no,location=no");
     }
 
