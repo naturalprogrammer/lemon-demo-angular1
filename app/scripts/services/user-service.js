@@ -17,13 +17,20 @@ angular.module('angularSampleApp')
       this.email = rawUser.email;
       this.roles = rawUser.roles;
       this.version = rawUser.version;
-      this.unverified = rawUser.unverified;
-      this.blocked = rawUser.blocked;
-      this.admin = rawUser.admin;
-      this.editable = rawUser.editable;
-      this.rolesEditable = rawUser.rolesEditable;
 
+      this.unverified = this.hasRole(authService.userRoles.UNVERIFIED);
+      this.blocked = this.hasRole(authService.userRoles.BLOCKED);
+      this.admin = this.hasRole(authService.userRoles.ADMIN);
+      this.goodUser = !(this.unverified || this.blocked);
+      this.goodAdmin = this.admin && this.goodUser;
+
+      this.editable = authService.isAuthenticated() && (this.id === authService.user.id || authService.isGoodAdmin());
+      this.rolesEditable = authService.isGoodAdmin() && this.id !== authService.user.id;
     };
+
+    User.prototype.hasRole = function(role) {
+      return this.roles.indexOf(role) !== -1;
+    }
 
     User.prototype.rolesStr = function() {
       if (this.roles.length === 0)

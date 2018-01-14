@@ -68,7 +68,7 @@
               <li ng-if="authService.isAuthenticated()" class="dropdown" dropdown>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
                   <span class="glyphicon glyphicon-user"></span>
-                  <span>{{ authService.user.name }}</span> <b class="caret"></b>
+                  <span>{{ authService.user.tag.name }}</span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="/users/{{authService.user.id}}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>

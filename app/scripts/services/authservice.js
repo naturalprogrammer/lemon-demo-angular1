@@ -14,7 +14,7 @@ angular.module('appBoot')
 
       userRoles: {
         ADMIN: 'ADMIN',
-        USER: 'USER',
+        //USER: 'USER',
         UNVERIFIED: 'UNVERIFIED',
         BLOCKED: 'BLOCKED'
       },
@@ -77,7 +77,16 @@ angular.module('appBoot')
     };
 
     authService.hasRole = function(role) {
-      return authService.user.roles.indexOf(role) !== -1;
+      return authService.isAuthenticated() && authService.user.roles.indexOf(role) !== -1;
+    };
+
+    authService.isGoodUser = function() {
+      return !(authService.hasRole(authService.userRoles.UNVERIFIED) ||
+               authService.hasRole(authService.userRoles.BLOCKED));
+    };
+
+    authService.isGoodAdmin = function() {
+      return authService.hasRole(authService.userRoles.ADMIN) && authService.isGoodUser();
     };
 
     authService.switchUser = function(email) {

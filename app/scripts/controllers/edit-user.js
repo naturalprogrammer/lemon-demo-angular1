@@ -15,12 +15,20 @@ angular.module('angularSampleApp')
     $scope.update = function() {
 
       var editedUser = $scope.user;
+      editedUser.roles = [];
+      if (editedUser.unverified)
+        editedUser.roles.push(authService.userRoles.UNVERIFIED);
+      if (editedUser.blocked)
+        editedUser.roles.push(authService.userRoles.BLOCKED);
+      if (editedUser.admin)
+        editedUser.roles.push(authService.userRoles.ADMIN);
 
       var patch = [
           {"op": "replace", "path": "/name", "value": editedUser.name},
-          {"op": "replace", "path": "/unverified", "value": editedUser.unverified},
-          {"op": "replace", "path": "/blocked", "value": editedUser.blocked},
-          {"op": "replace", "path": "/admin", "value": editedUser.admin}
+          // {"op": "replace", "path": "/unverified", "value": editedUser.unverified},
+          // {"op": "replace", "path": "/blocked", "value": editedUser.blocked},
+          // {"op": "replace", "path": "/admin", "value": editedUser.admin},
+          {"op": "replace", "path": "/roles", "value": editedUser.roles}
       ];
 
       formService.submit($scope.form, '/api/core/users/' + $scope.user.id, 'patch', {
