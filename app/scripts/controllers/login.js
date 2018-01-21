@@ -8,7 +8,7 @@
  * Controller of the angularSampleApp
  */
 angular.module('appBoot')
-  .controller('LoginCtrl', function ($scope, $http, $modal, $log, $location, $window, authService) {
+  .controller('LoginCtrl', function ($scope, $http, $modal, $log, $location, $window, authService, alerts) {
 
     $scope.credentials = {
       username: '',
@@ -55,17 +55,21 @@ angular.module('appBoot')
         "height=700,width=700,status=yes,toolbar=no,menubar=no,location=no");
     }
 
-    $window.socialLoginSuccess = function() {
+    $window.socialLoginSuccess = function(id, nonce) {
 
-      $http.get(serverUrl + '/api/core/context')
-        .success(function (data, status, headers, config) {
+      $http.post(serverUrl + '/api/core/login-with-nonce', {
+        userId: id,
+        nonce: nonce
+      }).success(function (data, status, headers, config) {
 
           authService.changeUser(data.user);
           $modal.loginModalInstance.close();
-        })
-        .error(function (data, status, headers, config) {
 
-            alert("Could not connect to server. Please try refreshing after sometime");
-        });
+      }).error(function (data, status, headers, config) {
+
+          alerts.setKind('danger');
+          alerts.addAlert("Invalid Nonce " + nonce + ". Please retry.");
+          $modal.loginModalInstance.close();
+      });
     }
   });

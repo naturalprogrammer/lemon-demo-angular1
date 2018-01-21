@@ -146,7 +146,7 @@ var serverUrl;
           templateUrl: 'views/api-key.html',
           controller: 'ApiKeyCtrl'
         })
-        .when('/social-login-success', {
+        .when('/users/:id/social-login-success/:nonce', {
           templateUrl: 'views/social-login-success.html',
           controller: 'SocialLoginSuccessCtrl'
         })

@@ -8,8 +8,8 @@
  * Controller of the angularSampleApp
  */
 angular.module('angularSampleApp')
-  .controller('SocialLoginSuccessCtrl', function ($scope, $window) {
+  .controller('SocialLoginSuccessCtrl', function ($scope, $window, $routeParams) {
 
-    $window.opener.socialLoginSuccess();
+    $window.opener.socialLoginSuccess($routeParams.id, $routeParams.nonce);
     $window.close();
   });
