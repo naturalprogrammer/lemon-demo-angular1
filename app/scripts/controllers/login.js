@@ -27,6 +27,8 @@ angular.module('appBoot')
           }
         })
         .then(function (data) {
+
+
           authService.changeUser(data.data);
           $modal.loginModalInstance.close();
         }, function (data) {

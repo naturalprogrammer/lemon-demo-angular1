@@ -90,7 +90,7 @@ var serverUrl;
       $httpProvider.defaults.withCredentials = true;
       //$httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
       // $httpProvider.interceptors.push('XSRFInterceptor');
-      // $httpProvider.interceptors.push('AuthInterceptor');
+      $httpProvider.interceptors.push('AuthInterceptor');
 
       // $httpProvider.defaults.useXDomain = true;
       // Nothing is needed.

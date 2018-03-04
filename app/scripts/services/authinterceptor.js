@@ -25,12 +25,12 @@ angular.module('appBoot')
           localStorage.setItem("authHeader", authHeader);
           $log.info("Lemon-Authorization received: " + authHeader);
 
-          if (response.data.username) {
-
-            var initInjector = angular.injector(["ng"]);
-            var authService = initInjector.get("authService");
-            authService.changeUser(data);
-          }
+          // if (response.data.username) {
+          //
+          //   var initInjector = angular.injector(["ng"]);
+          //   var authService = initInjector.get("authService");
+          //   authService.changeUser(data);
+          // }
         }
 
         return response;
