@@ -62,7 +62,8 @@ angular.module('appBoot')
         nonce: nonce
       }).success(function (data, status, headers, config) {
 
-          authService.changeUser(data.user);
+          authService.changeUser(data);
+          localStorage.setItem("authHeader", headers('Lemon-Authorization'));
           $modal.loginModalInstance.close();
 
       }).error(function (data, status, headers, config) {

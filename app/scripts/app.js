@@ -42,25 +42,45 @@ var serverUrl;
     var $http = initInjector.get("$http");
     $http.defaults.withCredentials = true;
 
-    // create session
-    $http.get(serverUrl + '/api/core/ping-session').success(function() {
+    var config = {};
+    config.headers = {"Content-Type": "application/json"};
+    if (localStorage.getItem("authHeader"))
+      config.headers["Authorization"] = localStorage.getItem("authHeader");
 
-        // fetch context
-        $http.get(serverUrl + '/api/core/context').
-        success(function (data, status, headers, config) {
+    // fetch context
+    $http.get(serverUrl + '/api/core/context', config).
+    success(function (data, status, headers, config) {
 
-          data.context.user = data.user;
-          angular.module('appBoot').constant("context", data.context);
-          $http.get(serverUrl + '/api/core/ping'); // otherwise gives CSRF exception if remember-me is activated
+      data.context.user = data.user;
+      angular.module('appBoot').constant("context", data.context);
 
-          angular.element(document).ready(function() {
-            angular.bootstrap(document, [appName]);
-          });
-        })
-      }).error(function (data, status, headers, config) {
-
-        alert("Could not connect to server. Please try refreshing after sometime");
+      angular.element(document).ready(function() {
+        angular.bootstrap(document, [appName]);
       });
+    }).error(function (data, status, headers, config) {
+
+      alert("Could not connect to server. Please try refreshing after sometime");
+    });
+    //
+    // // create session
+    // $http.get(serverUrl + '/api/core/ping-session').success(function() {
+    //
+    //     // fetch context
+    //     $http.get(serverUrl + '/api/core/context').
+    //     success(function (data, status, headers, config) {
+    //
+    //       data.context.user = data.user;
+    //       angular.module('appBoot').constant("context", data.context);
+    //       $http.get(serverUrl + '/api/core/ping'); // otherwise gives CSRF exception if remember-me is activated
+    //
+    //       angular.element(document).ready(function() {
+    //         angular.bootstrap(document, [appName]);
+    //       });
+    //     })
+    //   }).error(function (data, status, headers, config) {
+    //
+    //     alert("Could not connect to server. Please try refreshing after sometime");
+    //   });
   };
 
   angular.module('appBoot', ['ngMessages', 'ui.bootstrap', 'vcRecaptcha'])
@@ -69,7 +89,8 @@ var serverUrl;
       // needed for logging in to be remembered across requests
       $httpProvider.defaults.withCredentials = true;
       //$httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
-      $httpProvider.interceptors.push('XSRFInterceptor');
+      // $httpProvider.interceptors.push('XSRFInterceptor');
+      // $httpProvider.interceptors.push('AuthInterceptor');
 
       // $httpProvider.defaults.useXDomain = true;
       // Nothing is needed.
