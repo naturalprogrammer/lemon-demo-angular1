@@ -14,9 +14,10 @@ angular.module('angularSampleApp')
     $scope.retypePassword = '';
 
     $scope.resetPassword = function() {
-      formService.submit($scope.form, '/api/core/users/' + $routeParams.forgotPasswordCode + '/reset-password', 'post', {
+      formService.submit($scope.form, '/api/core/reset-password/', 'post', {
         data: {
-          newPassword: $scope.newPassword
+          newPassword: $scope.newPassword,
+          code: $routeParams.code
         },
         asParam: true,
         successMessage: 'Password changed successfully',

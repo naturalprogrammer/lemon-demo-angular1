@@ -139,7 +139,7 @@ var serverUrl;
           templateUrl: 'views/forgot-password.html',
           controller: 'ForgotPasswordCtrl'
         })
-        .when('/users/:forgotPasswordCode/reset-password', {
+        .when('/reset-password', {
           templateUrl: 'views/reset-password.html',
           controller: 'ResetPasswordCtrl'
         })
