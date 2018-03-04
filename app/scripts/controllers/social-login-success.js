@@ -10,6 +10,6 @@
 angular.module('angularSampleApp')
   .controller('SocialLoginSuccessCtrl', function ($scope, $window, $routeParams) {
 
-    $window.opener.socialLoginSuccess($routeParams.id, $routeParams.nonce);
+    $window.opener.socialLoginSuccess($routeParams.token);
     $window.close();
   });

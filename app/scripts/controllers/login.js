@@ -57,21 +57,20 @@ angular.module('appBoot')
         "height=700,width=700,status=yes,toolbar=no,menubar=no,location=no");
     }
 
-    $window.socialLoginSuccess = function(id, nonce) {
+    $window.socialLoginSuccess = function(token) {
 
-      $http.post(serverUrl + '/api/core/login-with-nonce', {
-        userId: id,
-        nonce: nonce
-      }).success(function (data, status, headers, config) {
+      localStorage.setItem("authHeader", "Bearer " + token);
+      $http.post(serverUrl + '/api/core/fetch-new-token')
+        .success(function (data, status, headers, config) {
 
           authService.changeUser(data);
-          localStorage.setItem("authHeader", headers('Lemon-Authorization'));
+          //localStorage.setItem("authHeader", headers('Lemon-Authorization'));
           $modal.loginModalInstance.close();
 
       }).error(function (data, status, headers, config) {
 
           alerts.setKind('danger');
-          alerts.addAlert("Invalid Nonce " + nonce + ". Please retry.");
+          alerts.addAlert("Invalid token " + token + ". Please retry.");
           $modal.loginModalInstance.close();
       });
     }
