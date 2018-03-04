@@ -59,6 +59,7 @@ var serverUrl;
       });
     }).error(function (data, status, headers, config) {
 
+      localStorage.removeItem("authHeader");
       alert("Could not connect to server. Please try refreshing after sometime");
     });
     //
@@ -159,7 +160,7 @@ var serverUrl;
           templateUrl: 'views/change-email-request.html',
           controller: 'ChangeEmailRequestCtrl'
         })
-        .when('/users/:changeEmailCode/change-email', {
+        .when('/users/:id/change-email', {
           templateUrl: 'views/change-email.html',
           controller: 'ChangeEmailCtrl'
         })

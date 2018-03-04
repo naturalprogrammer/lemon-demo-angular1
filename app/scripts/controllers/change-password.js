@@ -17,13 +17,13 @@ angular.module('angularSampleApp')
     };
 
     $scope.changePassword = function() {
-      formService.submit($scope.form, '/api/core/users/' + $routeParams.id + '/change-password', 'post', {
+      formService.submit($scope.form, '/api/core/users/' + $routeParams.id + '/password', 'post', {
         data: $scope.passwords,
         successMessage: 'Password changed successfully',
         onSuccess: function() {
           $location.url("/");
-          if (authService.user.id === $routeParams.id)
-            authService.changeUser(null);
+          // if (authService.user.id === $routeParams.id)
+          //   authService.changeUser(null);
         }
       });
 

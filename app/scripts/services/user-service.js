@@ -66,7 +66,8 @@ angular.module('angularSampleApp')
             into[as] = new User(rawUser);
           })
           .error(function(data, status, headers, config) {
-            alerts.addAlert("Error fetching user");
+            alerts.setKind("danger");
+            alerts.addAlert(data.message);
           });
 
       },
@@ -89,11 +90,12 @@ angular.module('angularSampleApp')
           id = authService.user.id;
 
         $http
-          .get(serverUrl + '/api/core/users/' + id + '/resend-verification-mail')
+          .post(serverUrl + '/api/core/users/' + id + '/resend-verification-mail')
           .then(function () {
             alerts.addAlert("Mail sent. ");
           }, function (data) {
-            alerts.addAlert("Couldn't send mail: " + JSON.stringify(data));
+            alerts.setKind("danger");
+            alerts.addAlert("Couldn't send mail: " + data.data.message);
           });
       }
     };

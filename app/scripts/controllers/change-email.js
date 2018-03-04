@@ -15,12 +15,17 @@ angular.module('angularSampleApp')
     };
 
     $scope.changeEmail = function() {
-      $http.post(serverUrl + '/api/core/users/' + $routeParams.changeEmailCode + '/change-email')
-        .success(function(data, status, headers, config) {
+      $http.post(serverUrl + '/api/core/users/' + $routeParams.id + '/email', $.param({
+        code: $routeParams.code
+      }), {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).success(function(data, status, headers, config) {
 
           alerts.setKind('success');
           alerts.addAlert('Email changed.');
-          authService.changeUser(null);
+          authService.changeUser(data);
         })
         .error(function(data, status, headers, config) {
 

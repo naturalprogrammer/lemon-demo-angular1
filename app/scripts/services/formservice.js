@@ -29,8 +29,8 @@ angular.module('appBoot')
 
         switch (errorData.exception) {
 
-          case 'javax.validation.ConstraintViolationException': // server side JSR-303 errors
-          case 'com.naturalprogrammer.spring.lemon.exceptions.MultiErrorException': // server side form errors manually thrown
+          case 'ConstraintViolationException': // server side JSR-303 errors
+          case 'MultiErrorException': // server side form errors manually thrown
 
             angular.forEach(errorData.errors, function(error) { // for each fields
 

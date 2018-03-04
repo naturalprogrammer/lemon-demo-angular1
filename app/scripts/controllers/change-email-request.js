@@ -14,7 +14,7 @@ angular.module('angularSampleApp')
 
     $scope.requestChange = function() {
 
-      formService.submit($scope.form, '/api/core/users/' + $scope.user.id + '/request-email-change', 'post', {
+      formService.submit($scope.form, '/api/core/users/' + $scope.user.id + '/email-change-request', 'post', {
         data: $scope.user,
         successMessage: 'A mail containing a link has been sent to the new email id. Click on that link to change your email',
         onSuccess: function(currentUser){
