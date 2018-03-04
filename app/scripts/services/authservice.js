@@ -8,7 +8,7 @@
  * Service in the angularSampleApp.
  */
 angular.module('appBoot')
-  .factory('authService', function ($http, $modal, context, ping, alerts) {
+  .factory('authService', function ($http, $modal, context, alerts) {
 
     var authService = {
 
@@ -58,18 +58,22 @@ angular.module('appBoot')
     };
 
     authService.logout = function() {
-      $http
-        .post(serverUrl + '/logout')
-        .then(function (data) {
-          authService.changeUser(null);
-        }, function (data) {
-          alerts.addAlert("Couldn't logout: " + data.data.message);
-        });
+
+      localStorage.removeItem("authHeader");
+      authService.changeUser(null);
+
+      // $http
+      //   .post(serverUrl + '/logout')
+      //   .then(function (data) {
+      //     authService.changeUser(null);
+      //   }, function (data) {
+      //     alerts.addAlert("Couldn't logout: " + data.data.message);
+      //   });
     };
 
     authService.changeUser = function(user) {
       authService.user = user;
-      ping();
+      // ping();
       //if (authService.hasRole(authService.userRoles.UNVERIFIED))
       //  alerts.addTrustedAlert("Your email is UNVERIFIED. " +
       //      "<a href='#' ng-click='authService.resendVerificationMail()'>" +
