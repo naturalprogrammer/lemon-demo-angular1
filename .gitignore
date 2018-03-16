@@ -4,4 +4,9 @@ dist
 .sass-cache
 bower_components
 .idea
+.project
+.settings
+package-lock.json
+
+
 
