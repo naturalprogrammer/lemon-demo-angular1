@@ -22,8 +22,6 @@ angular.module('angularSampleApp')
         successMessage: 'Password changed successfully',
         onSuccess: function() {
           $location.url("/");
-          // if (authService.user.id === $routeParams.id)
-          //   authService.changeUser(null);
         }
       });
 

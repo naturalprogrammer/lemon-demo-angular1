@@ -25,9 +25,6 @@ angular.module('angularSampleApp')
 
       var patch = [
           {"op": "replace", "path": "/name", "value": editedUser.name},
-          // {"op": "replace", "path": "/unverified", "value": editedUser.unverified},
-          // {"op": "replace", "path": "/blocked", "value": editedUser.blocked},
-          // {"op": "replace", "path": "/admin", "value": editedUser.admin},
           {"op": "replace", "path": "/roles", "value": editedUser.roles}
       ];
 

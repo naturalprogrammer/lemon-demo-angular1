@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc function
- * @name angularSampleApp.controller:ProfileCtrl
+ * @name angularSampleApp.controller:ApiKeyCtrl
  * @description
  * # ProfileCtrl
  * Controller of the angularSampleApp

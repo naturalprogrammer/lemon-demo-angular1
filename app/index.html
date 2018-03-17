@@ -77,9 +77,6 @@
                   <li ng-if="authService.hasAnyRole(authService.userRoles.ADMIN)">
                     <a href="/admin"><span class="glyphicon glyphicon-wrench"></span> Admin</a>
                   </li>
-                  <li ng-if="authService.switchUserCount > 0">
-                    <a href="#" ng-click="authService.switchUserBack()"><span class="glyphicon glyphicon-wrench"></span> Switch Back</a>
-                  </li>
 
                 </ul>
               </li>

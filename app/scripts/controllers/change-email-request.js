@@ -17,10 +17,8 @@ angular.module('angularSampleApp')
       formService.submit($scope.form, '/api/core/users/' + $scope.user.id + '/email-change-request', 'post', {
         data: $scope.user,
         successMessage: 'A mail containing a link has been sent to the new email id. Click on that link to change your email',
-        onSuccess: function(currentUser){
+        onSuccess: function(currentUser) {       	
           $location.url("/users/" + $routeParams.id);
-          //if (authService.user.id === $routeParams.id) // if the same user has logged in
-          //  authService.user = currentUser;
         }});
     };
 

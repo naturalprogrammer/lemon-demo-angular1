@@ -74,7 +74,7 @@ angular.module('angularSampleApp')
 
       fetchByEmail: function(email, form, onSuccess) {
 
-        formService.submit(form, '/api/core/users/fetch-by-email', 'get', {
+        formService.submit(form, '/api/core/users/fetch-by-email', 'post', {
           data: {
             email: email
           },

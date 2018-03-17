@@ -12,8 +12,7 @@ angular.module('appBoot')
 
     $scope.credentials = {
       username: '',
-      password: '',
-      rememberMe: false
+      password: ''
     };
 
     $scope.errors = [];
@@ -27,7 +26,6 @@ angular.module('appBoot')
           }
         })
         .then(function (data) {
-
 
           authService.changeUser(data.data);
           $modal.loginModalInstance.close();
@@ -64,7 +62,6 @@ angular.module('appBoot')
         .success(function (data, status, headers, config) {
 
           authService.changeUser(data);
-          //localStorage.setItem("authHeader", headers('Lemon-Authorization'));
           $modal.loginModalInstance.close();
 
       }).error(function (data, status, headers, config) {
