@@ -19,28 +19,18 @@ angular.module('angularSampleApp')
     $scope.token = null;
 
     $scope.createApiKey = function() {
-      if (confirm("This will remove any existing API key. Are you sure?")) {
-        $http.post(serverUrl + '/api/core/users/' + $routeParams.id + '/api-key')
+        $http.post(serverUrl + '/api/core/fetch-new-token',
+        	$.param({'username': $scope.user.email, 'expirationMillis': 3155695200000}), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              }
+            })
           .success(function (apiKeyData, status, headers, config) {
-            $scope.apiKey = apiKeyData.apiKey;
+            $scope.apiKey = apiKeyData.token;
           })
           .error(function (error, status, headers, config) {
             alerts.setKind('danger');
             alerts.addAlert("Error creating API key: " + error.message);
           });
-      }
-    }
-
-    $scope.removeApiKey = function() {
-      $http.delete(serverUrl + '/api/core/users/' + $routeParams.id + '/api-key')
-        .success(function(tokenData, status, headers, config) {
-          $scope.apiKey = null;
-          alerts.setKind('success');
-          alerts.addAlert("API key removed.");
-        })
-        .error(function(error, status, headers, config) {
-          alerts.setKind('danger');
-          alerts.addAlert("Error removing API key: " + error.message);
-        });
     }
   });
