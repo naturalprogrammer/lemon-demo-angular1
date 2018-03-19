@@ -52,6 +52,7 @@ var serverUrl;
     success(function (data, status, headers, config) {
 
       data.context.user = data.user;
+      localStorage.setItem("authHeader", headers('Lemon-Authorization'));
       angular.module('appBoot').constant("context", data.context);
 
       angular.element(document).ready(function() {
@@ -60,7 +61,7 @@ var serverUrl;
     }).error(function (data, status, headers, config) {
 
       localStorage.removeItem("authHeader");
-      alert("Could not connect to server. Please try refreshing after sometime");
+      alert("Either Authorization header expired or could not connect to server. Please try refreshing ... ");
     });
   };
 

@@ -58,10 +58,10 @@ angular.module('appBoot')
     $window.socialLoginSuccess = function(token) {
 
       localStorage.setItem("authHeader", "Bearer " + token);
-      $http.post(serverUrl + '/api/core/fetch-new-token')
+      $http.get(serverUrl + '/api/core/context')
         .success(function (data, status, headers, config) {
 
-          authService.changeUser(data);
+          authService.changeUser(data.user);
           $modal.loginModalInstance.close();
 
       }).error(function (data, status, headers, config) {

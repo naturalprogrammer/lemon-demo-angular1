@@ -19,7 +19,7 @@ angular.module('angularSampleApp')
     $scope.token = null;
 
     $scope.createApiKey = function() {
-        $http.post(serverUrl + '/api/core/fetch-new-token',
+        $http.post(serverUrl + '/api/core/fetch-new-auth-token',
         	$.param({'username': $scope.user.email, 'expirationMillis': 3155695200000}), {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
