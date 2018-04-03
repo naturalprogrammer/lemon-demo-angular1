@@ -112,7 +112,7 @@ var serverUrl;
           templateUrl: 'views/admin.html',
           controller: 'AdminCtrl'
         })
-        .when('/users/:verificationCode/verify', {
+        .when('/users/:id/verification', {
           templateUrl: 'views/verify.html',
           controller: 'VerifyCtrl'
         })

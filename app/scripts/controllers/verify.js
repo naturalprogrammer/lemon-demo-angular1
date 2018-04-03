@@ -15,7 +15,13 @@ angular.module('appBoot')
     };
 
     $scope.verify = function() {
-      $http.post(serverUrl + '/api/core/users/' + $routeParams.verificationCode + '/verify')
+      $http.post(serverUrl + '/api/core/users/' + $routeParams.id + '/verification', $.param({
+    	      code: $routeParams.code
+          }), {
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
         .success(function(data, status, headers, config) {
 
           alerts.setKind('success');
