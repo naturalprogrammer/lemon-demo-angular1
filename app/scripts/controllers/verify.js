@@ -10,10 +10,6 @@
 angular.module('appBoot')
   .controller('VerifyCtrl', function ($scope, $http, $routeParams, $location, authService, alerts) {
 
-    $scope.permitted = function () {
-      return authService.isAuthenticated();
-    };
-
     $scope.verify = function() {
       $http.post(serverUrl + '/api/core/users/' + $routeParams.id + '/verification', $.param({
     	      code: $routeParams.code
